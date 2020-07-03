@@ -1,0 +1,15 @@
+name: "python_module_5"
+output_dir: "docs"
+navbar:
+  title: "LSHTM Python Module 5"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Practical 1"
+      href: practical_1.html
+    - text: "Practical 2"
+      href: practical_2.html
+    - text: "Challenge"
+      href: challenge.html
+    - text: "About"
+      href: about.html

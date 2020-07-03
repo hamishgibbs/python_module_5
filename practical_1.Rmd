@@ -1,0 +1,12 @@
+---
+title: "Practical 1"
+output: html_document
+---
+
+## Introduction
+
+## Section 1
+
+## Section 2
+
+## Solutions
