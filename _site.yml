@@ -1,7 +1,7 @@
 name: "python_module_5"
 output_dir: "docs"
 navbar:
-  title: "LSHTM Python Module 5"
+  title: "Module 5"
   left:
     - text: "Home"
       href: index.html

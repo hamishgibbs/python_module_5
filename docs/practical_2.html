@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 2</title>
+<title>Practical L2</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -267,7 +267,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">LSHTM Python Module 5</a>
+      <a class="navbar-brand" href="index.html">Module 5</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -298,22 +298,42 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Practical 2</h1>
+<h1 class="title toc-ignore">Practical L2</h1>
 
 </div>
 
 
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
 </div>
-<div id="section-1" class="section level2">
-<h2>Section 1</h2>
+<div id="importing-data" class="section level3">
+<h3>Importing data</h3>
+<p>Import csv data from <code>URL HERE</code></p>
+<p>Notice the warning message from <code>pandas.read_csv()</code>: <code>Columns (1,2,10,11,13,14,17,18,20,22,23,24) have mixed types</code>. This is a warning sign for early issues in the dataset we are importing. Pandas expects columns of data to have a single type, and warns us if it encounters multiple types in the same column. For example, we will see a warning if we import a dataset with integers and strings in the same columns.</p>
+<ul>
+<li>Specify data types using the <code>pandas.read_csv()</code> <code>dtypes</code> argument and re-import the data.</li>
+</ul>
+<p>The data has now been imported without any parsing warnings.</p>
+<ul>
+<li>Use pandas <code>pandas.DataFrame.info()</code> to view some basic information about the dataset.</li>
+</ul>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html" target="_blank"><code>read_csv()</code></a><br />
+<a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank"><code>dict()</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html" target="_blank"><code>pandas.DataFrame.info()</code></a></p>
+<p>transform data get unique values from a column - symptoms break symptoms into individual columns - try with a regex Join a standard symptom reference dataset to the symptom names summarise based on symptom</p>
 </div>
-<div id="section-2" class="section level2">
-<h2>Section 2</h2>
+<div id="section-2" class="section level3">
+<h3>Section 2</h3>
 </div>
-<div id="solutions" class="section level2">
-<h2>Solutions</h2>
+<div id="solutions" class="section level3">
+<h3>Solutions</h3>
+<p><a href="" target="_blank"></a></p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+</details>
+<p><br/></p>
 </div>
 
 

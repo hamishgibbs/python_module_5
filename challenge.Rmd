@@ -3,10 +3,16 @@ title: "Challenge"
 output: html_document
 ---
 
-## Introduction
+### Introduction
 
-## Section 1
+clean and test data
 
-## Section 2
+DRY - wrap everything into functions
+test the functions
+test the output dataset - what are appropriate tests? what are not?
 
-## Solutions
+### Section 1
+
+### Section 2
+
+### Solutions

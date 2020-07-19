@@ -1,8 +1,34 @@
 ---
-title: "Module 5"
+title: "Manipulating Data I"
 output: html_document
 ---
 
-## Overview
-
 *Please note - this course is currently under development.*
+
+## Overview
+This module will introduce data management and dataset transformations in Python. Specifically, we will focus on reliably importing data, handling missing values, extracting data from combined dataset records, and manipulating data to produce analysis-ready datasets.
+
+## The dataset
+This module will use data from the early stages of the COVID-19 outbreak in Hubei Province, China, where the SARS-CoV-2 virus was first detected. The dataset is the linelist of confirmed COVID-19 cases admitted to Hubei Province hospitals. Some processing has already been completed to translate the dataset to English, and harmonize hospital linelists from different providers. The data was originally sourced from:  [beoutbreakprepared](https://github.com/beoutbreakprepared/nCoV2019/blob/master/covid19).
+
+There are two versions available for this practical: 
+
+LINK HERE (marginally cleaned)  
+LINK HERE (cleaned more thoroughly)
+
+
+## Layout
+
+This module includes large code chunks provided in-line. Tasks for each section of the practicals are also listed with bullet points. Relevent documentation for the functions and packages that are required to complete each task are also provided.
+
+You are encouraged to develop your own programming style, use the provided documentation for reference, and attempt to find your own solution to each task. Full code for each section is provided in the "Solutions" section **LINK HERE**.
+
+As always, a quick Google is your best friend. 
+
+## Summary
+
+[Practical L1](): An introduction to data cleaning on a relatively clean dataset.  
+
+[Practical L2](): An introduction to data cleaning on a less clean dataset.  
+
+[Challenge Exercise](): An introduction writing reusable cleaning routines and software testing.  

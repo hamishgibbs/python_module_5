@@ -1,12 +1,45 @@
 ---
-title: "Practical 2"
+title: "Practical L2"
 output: html_document
 ---
 
-## Introduction
+### Introduction
 
-## Section 1
+### Importing data
 
-## Section 2
+ Import csv data from `URL HERE`
 
-## Solutions
+Notice the warning message from `pandas.read_csv()`: `Columns (1,2,10,11,13,14,17,18,20,22,23,24) have mixed types`. This is a warning sign for early issues in the dataset we are importing. Pandas expects columns of data to have a single type, and warns us if it encounters multiple types in the same column. For example, we will see a warning if we import a dataset with integers and strings in the same columns.
+
+- Specify data types using the `pandas.read_csv()` `dtypes` argument and re-import the data. 
+
+The data has now been imported without any parsing warnings. 
+
+- Use pandas `pandas.DataFrame.info()` to view some basic information about the dataset. 
+
+**Relevant Documentation:**  
+[`read_csv()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html){target="_blank"}  
+[`dict()`](https://docs.python.org/3/tutorial/datastructures.html#dictionaries){target="_blank"}  
+[`pandas.DataFrame.info()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html){target="_blank"}  
+
+
+transform data
+get unique values from a column - symptoms
+break symptoms into individual columns - try with a regex
+Join a standard symptom reference dataset to the symptom names
+summarise based on symptom 
+
+### Section 2
+
+### Solutions
+
+
+
+[](){target="_blank"}  
+
+<br/> <details><summary>Details</summary>
+```{python eval=FALSE}
+
+```
+</details><br/>
+

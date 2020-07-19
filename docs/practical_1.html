@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 1</title>
+<title>Practical L1</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -267,7 +267,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">LSHTM Python Module 5</a>
+      <a class="navbar-brand" href="index.html">Module 5</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -298,22 +298,290 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Practical 1</h1>
+<h1 class="title toc-ignore">Practical L1</h1>
 
 </div>
 
 
+<p><br/></p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
+<p>In this practical - we will import data from this course’s repository, inspect the dataset, and perform some standard data cleaning routines to prepare this dataset for future analysis.</p>
 </div>
-<div id="section-1" class="section level2">
-<h2>Section 1</h2>
+<div id="import-packages" class="section level2">
+<h2>Import packages</h2>
+<p><br/></p>
+<pre class="python"><code>import pandas as pd
+import numpy as np</code></pre>
+<p><br/></p>
 </div>
-<div id="section-2" class="section level2">
-<h2>Section 2</h2>
+<div id="importing-data" class="section level2">
+<h2>Importing data</h2>
+<p>Import csv data from <code>URL HERE</code> using <code>pandas.read_csv()</code>.</p>
+Inspect the format of the imported data with <code>pandas.DataFrame.head</code>.<br />
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>data_url = &#39;https://github.com/beoutbreakprepared/nCoV2019/raw/master/covid19/data/clean-hubei.csv&#39;
+
+hubei = pd.read_csv(data_url)
+
+hubei.head()</code></pre>
+</details>
+<br/> Use pandas <code>pandas.DataFrame.info()</code> to view some basic information about the dataset.<br />
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.info()</code></pre>
+</details>
+<p><br/> <strong>Relevant Documentation:</strong><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html" target="_blank"><code>read_csv()</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html" target="_blank"><code>pandas.DataFrame.head</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html" target="_blank"><code>pandas.DataFrame.info()</code></a></p>
 </div>
-<div id="solutions" class="section level2">
-<h2>Solutions</h2>
+<div id="refresher-accessing-specific-rows-and-columns" class="section level2">
+<h2>Refresher: accessing specific rows and columns</h2>
+<p>Access rows and columns of the imported data using list indices, <code>pandas.DataFrame.loc</code>, and <code>pandas.DataFrame.iloc</code>. These are all valid ways to access data in the dataframe, list indices and <code>pandas.DataFrame.loc</code> use named columns to access data while <code>pandas.DataFrame.iloc</code> uses numeric indices to access data.</p>
+Practice selecting certain columns from the <code>hubei</code> dataset with list indices <code>[]</code>.<br />
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei[[&#39;id&#39;, &#39;age&#39;, &#39;sex&#39;]]</code></pre>
+</details>
+<p><br/></p>
+Select certain rows from the dataset using <code>pandas.DataFrame.loc[]</code>.<br />
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.loc[10:13]</code></pre>
+</details>
+<p><br/></p>
+Select certain rows AND columns from the dataset using <code>pandas.DataFrame.loc[]</code>. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.loc[10:13, [&#39;id&#39;, &#39;age&#39;, &#39;sex&#39;]]</code></pre>
+</details>
+<p><br/></p>
+Select certain rows AND columns from the dataset using <code>pandas.DataFrame.iloc[]</code>. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.iloc[10:13, 1:4]</code></pre>
+</details>
+<p><br/></p>
+<p>Consider the pros and cons of using <code>pandas.DataFrame.loc</code> vs <code>pandas.DataFrame.iloc</code>. What if dataset columns are rearranged?</p>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://kite.com/python/examples/3182/pandas-select-columns-of-a-%60dataframe%60-by-column-name%22" target="_blank"><code>[] column selection</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html" target="_blank"><code>pandas.DataFrame.loc[]</code></a></p>
+</div>
+<div id="indices" class="section level2">
+<h2>Indices</h2>
+<p>Indices are used to identify specific data in a dataset. Pandas can access data using row and column indices. in the dataset, column indices are column names, and each row has a unique numeric index. When printing the dataframe, you can see the numeric row indices on the left hand side of the dataframe.</p>
+Use <code>pandas.DataFrame.index</code> to inspect the row index of the <code>hubei</code> dataframe. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.index</code></pre>
+</details>
+<p><br/></p>
+<p>Indices are attached to a certain row or column until they are altered during data processing or changed manually. This means that row indices are not necessarily unique. For example, combining two datasets with identical numeric indices would create a dataset with duplicated row indices.</p>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.index.html" target="_blank"><code>pandas.DataFrame.index</code></a></p>
+</div>
+<div id="sorting-data" class="section level2">
+<h2>Sorting data</h2>
+<p>Data can be sorted with <code>pandas.DataFrame.sort_values</code>.</p>
+Sort the <code>hubei</code> dataframe by the <code>sex</code> column with <code>pandas.DataFrame.sort_values</code>. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.sort_values(&#39;sex&#39;)</code></pre>
+</details>
+<p><br/></p>
+Use the argument <code>ascending = False</code> to flip the sorting operation. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.sort_values(&#39;sex&#39;, ascending = False)</code></pre>
+</details>
+<p><br/></p>
+<p>Notice that the column indices are no longer sequential. This is because the order of the rows in the dataframe has changed, but the row indices have not been changed. This is an important feature, as indices can be used to referenced specific rows through different processing steps.</p>
+After sorting the data by sex, we can reset the index using <code>pandas.DataFrame.reset_index()</code>. Use the argument <code>drop = True</code> to discard the old index. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei = hubei.sort_values(&#39;sex&#39;)
+hubei = hubei.reset_index(drop = True)</code></pre>
+</details>
+<p><br/></p>
+For a more straight forward process, use the argument <code>inplace = True</code> to alter the original dataset, not a copy. Use <code>ignore_index = True</code> to drop the previous index, the same as using <code>pandas.DataFrame.reset_index()</code>. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.sort_values(&#39;sex&#39;, ignore_index = True, inplace = True)</code></pre>
+</details>
+<p><br/></p>
+<p>Much more pythonic.</p>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html" target="_blank"><code>pandas.DataFrame.sort_values</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html" target="_blank"><code>pandas.DataFrame.reset_index()</code></a></p>
+</div>
+<div id="selecting-certain-columns" class="section level2">
+<h2>Selecting certain columns</h2>
+<p>Now that we have practiced selecting different elements from the dataframe, we focus more closely on a subset of the columns in the dataset.</p>
+<p>Select the following columns from the imported dataset:</p>
+<code>'id', 'age', 'sex', 'city', 'province', 'date_admission_hospital', 'date_confirmation', 'symptoms', 'outcome', 'date_death_or_discharge'</code> <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>select_columns = [&#39;id&#39;, 
+                  &#39;age&#39;, 
+                  &#39;sex&#39;, 
+                  &#39;city&#39;, 
+                  &#39;province&#39;, 
+                  &#39;date_admission_hospital&#39;, 
+                  &#39;date_confirmation&#39;, 
+                  &#39;symptoms&#39;, 
+                  &#39;outcome&#39;, 
+                  &#39;date_death_or_discharge&#39;]
+
+hubei = hubei[select_columns]</code></pre>
+</details>
+<p><br/></p>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://kite.com/python/examples/3182/pandas-select-columns-of-a-%60dataframe%60-by-column-name%22" target="_blank"><code>[] column selection</code></a></p>
+</div>
+<div id="parsing-date-formats" class="section level2">
+<h2>Parsing date formats</h2>
+<p>Notice that some of the columns we have selected clearly hold date values - but the data type of these columns is <code>object</code> - a string. (refer to the output of <code>pandas.DataFrame.info()</code>). A standard step in cleaning a new dataset is converting dates stored as text to a date object that can be understood by pandas.</p>
+As a simple example - try converting a simple date string to a <code>pandas.Timestamp</code> object using <code>pandas.to_datetime</code>. For differently formatted dates, see the <code>pandas.to_datetime</code> <code>format</code> argument. <a href="https://strftime.org/" target="_blank">https://strftime.org/</a> has a useful lookup table for the format of a date parsing formatting string. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>pd.to_datetime(&#39;02-02-2020&#39;) #automatically recognized as a date
+pd.to_datetime(&#39;02.02.2020&#39;, format = &#39;%d.%m.%Y&#39;) #specify the format of the date with the format argument</code></pre>
+</details>
+<p><br/></p>
+<p>The dates in our dataset - in the format <code>02.02.2020</code> can actually be recognized without a format argument.</p>
+<p>Use <code>pandas.to_datetime</code> to convert the values in <code>'date_admission_hospital'</code>, <code>'date_confirmation'</code>, and <code>'date_death_or_discharge'</code> to pandas <code>pandas.Timestamp</code> objects. For an understanding of the output of <code>pandas.to_datetime</code>, see the <a href="https://docs.python.org/3/library/datetime.html"><code>datetime</code></a> library.</p>
+Notice that we can pass a pandas series to <code>pandas.to_datetime</code> and return a pandas series of recognized dates. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>pd.to_datetime(hubei[&#39;date_confirmation&#39;])</code></pre>
+</details>
+<p><br/></p>
+We can also apply the <code>pandas.to_datetime</code> to selected columns and convert the date values in place using <code>pandas.DataFrame.apply</code>.<br />
+Applying functions to a selection of columns is extremely useful, see the documentation for further information on applying a function to a pandas column and imagine other cases where this may be useful. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>date_cols = [&#39;date_admission_hospital&#39;, &#39;date_confirmation&#39;, &#39;date_death_or_discharge&#39;]
+
+hubei[date_cols] = hubei[date_cols].apply(pd.to_datetime)</code></pre>
+</details>
+<p><br/></p>
+<p>Notice that the null values in the date columns have changed from <code>NaN</code> to <code>NaT</code>.</p>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html" target="_blank"><code>pandas.DataFrame.info()</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html" target="_blank"><code>pandas.to_datetime()</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Timestamp.html" target="_blank"><code>pandas.Timestamp</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html" target="_blank"><code>pandas.DataFrame.apply</code></a></p>
+</div>
+<div id="identifying-missing-data" class="section level2">
+<h2>Identifying missing data</h2>
+<p>Identifying missing values in a dataset is important when preparing a dataset for future analysis. Extract the columns containing any or all missing values using <code>pandas.DataFrame.columns</code>, <code>pandas.DafaFrame.isna()</code>, <code>pandas.DataFrame.all()</code>, and <code>pandas.Series.tolist()</code>.</p>
+Identify columns containing all null values. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.columns[hubei.isna().all()].tolist()</code></pre>
+</details>
+<p><br/></p>
+Identify columns containing any null values. <br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.columns[hubei.isna().any()].tolist()</code></pre>
+</details>
+<p><br/></p>
+<p><em>Tip:</em> break this operation into its component parts to make sure you understand what is going on. You should be familiar with selecting indices from a Series or list using a boolean index.</p>
+<p><strong>Relevant Documentation:</strong><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.columns.html" target="_blank"><code>pandas.DataFrame.columns</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.isna.html" target="_blank"><code>pandas.DataFrame.isna</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.all.html" target="_blank"><code>pandas.DataFrame.all</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.tolist.html" target="_blank"><code>pandas.Series.tolist</code></a></p>
+</div>
+<div id="handling-missing-data" class="section level2">
+<h2>Handling missing data</h2>
+<p>There are a variety of different approaches to handling missing data. Here, we will focus on the following:</p>
+<ul>
+<li>Dropping</li>
+<li>Replacement</li>
+<li>Imputation</li>
+</ul>
+<p>The best approach for handling missing values in a dataset will depend on a variety of factors including the number of missing values, the type of data, and the target output of your analysis.</p>
+<p>The simplest approach to handling missing values is simply to drop them.</p>
+<p>Use <code>pandas.DataFrame.dropna</code> to drop rows with a missing <code>age</code> value. Use <code>axis</code> argument to specify that rows should be dropped, not columns. Use the <code>subset</code> argument to drop records with a null value in the <code>age</code> column, not in all columns. Use the argument <code>inplace = True</code> to alter the original dataset, not a copy</p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei.dropna(axis = 0, subset = [&#39;age&#39;], inplace = True)</code></pre>
+</details>
+<p><br/></p>
+<p>For some missing values, particularly text fields, it may be useful to replace null values with a certain coded value.</p>
+<p>Use <code>pandas.DataFrame.replace</code> to replace <code>NaN</code> values with a string (<code>&quot;unknown&quot;</code>). In the <code>outcome</code> column.</p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei[&#39;outcome&#39;].replace(np.nan, &#39;unknown&#39;, inplace = True)</code></pre>
+</details>
+<p><br/></p>
+<p>Imputation refers to “filling in” missing values with numeric values derived from the dataset. <strong>Be very careful</strong> when imputing values during data cleaning - the wrong approach to imputation can introduce bias in subsequent analyses.</p>
+<p>As an example, we will extract the numeric age values in the <code>age</code> column and replace the other age values with the median age of the existing values. Notice that most values in the <code>age</code> columns have a broad age range listed as a string.</p>
+<p>Extract the numeric age values using <code>pandas.to_numeric</code>. The <code>errors</code> argument specifies what to do with values that fail to be transformed to numeric values.</p>
+<p>Fill na values with the median of the column using <code>pandas.DataFrame.fillna</code> and <code>pandas.DataFrame.median</code>.</p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei[&#39;age&#39;] = pd.to_numeric(hubei[&#39;age&#39;], errors = &#39;coerce&#39;)
+hubei[&#39;age&#39;].fillna((hubei[&#39;age&#39;].median()), inplace=True)</code></pre>
+</details>
+<p><br/></p>
+<p>Notice that we are using 41 values to impute 194 missing values in the age column. Obviously, this would be inappropriate in practice because there are far more values missing data than values containing data.</p>
+<p><strong>Relevant Documentation:</strong> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html" target="_blank"><code>pandas.DataFrame.dropna</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html" target="_blank"><code>pandas.DataFrame.replace</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_numeric.html" target="_blank"><code>pandas.to_numeric</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html" target="_blank"><code>pandas.DataFrame.fillna</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.median.html" target="_blank"><code>pandas.DataFrame.median</code></a></p>
+</div>
+<div id="regex-matching" class="section level2">
+<h2>regex matching</h2>
+<p>Regular expressions (regex) are flexible, reusable expressions for matching or extracting data from a string. regex in Python can be considered as a small programming language independent from Python, with unique syntax and a limited application.</p>
+<p>There are many approaches for extracting data from text that do not involve regular expression matching. When working with data embedded in strings, it is worth considering a variety of tools. <a href="http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html">As expressions become more complex</a>, it may become more challenging to debug a regex routine. See the default <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">Python string methods</a> which can be useful for working with text data directly.</p>
+<p>We have touched on regex formatting in the lecture. There are a variety of <a href="https://www.dataquest.io/wp-content/uploads/2019/03/python-regular-expressions-cheat-sheet.pdf">“cheat sheet”</a> resources available for referencing the specifics of regex syntax. The <a href="https://docs.python.org/3/library/re.html"><code>re</code></a> also package provides some higher level functions to complete typical regex tasks.</p>
+<p>In this example, we will only focus on the <code>city</code> column of the original dataset. Imagine that we would like to extract the name of the city where each case was reported, disregarding other information in the same column.</p>
+<p>Use <code>pandas.Series.value_counts</code> to inspect the values in the <code>city</code> column.</p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei = pd.read_csv(data_url)
+hubei[&#39;city&#39;].value_counts()</code></pre>
+</details>
+<p><br/></p>
+<p>Use a regular expression <code>r'^([\w\-]+)'</code> to extract the first word of the <code>city</code> column into the <code>city_name</code> column. Use <code>pandas.Series.value_counts</code> to inspect the values in the <code>city_name</code> column.</p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei[&#39;city_name&#39;] = hubei[&#39;city&#39;].str.extract(r&#39;^([\w\-]+)&#39;)
+hubei[&#39;city_name&#39;].value_counts()</code></pre>
+</details>
+<p><br/></p>
+<p>Notice that “Wuhan” has been extracted correctly, but the other city name has not been extracted correctly. We would like to extract the word preceding the word &quot; City“, so we can replace the previous regex with the expression <code>r&quot;(\w*)\s*(?=City)&quot;</code>. This expression extracts the one word preceding the string” City&quot;.</p>
+<br/>
+<details>
+<p><summary>Details</summary></p>
+<pre class="python"><code>hubei[&#39;city_name&#39;] = hubei[&#39;city&#39;].str.extract(r&quot;(\w*)\s*(?= City)&quot;)
+hubei[&#39;city_name&#39;].value_counts()</code></pre>
+</details>
+<p><br/></p>
+<p>Writing reliable regex takes some time (and Googling). There are a variety of resources online to give a more in-depth explanation of regex operations, like <a href="https://docs.python.org/3/howto/regex.html">this one</a> in the Python docs. There are also <a href="https://www.regextester.com/">online tools</a> you can use to interactively test a regex on a sample of your data.</p>
+<p><strong>Relevant Documentation:</strong> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.value_counts.html" target="_blank"><code>pandas.Series.value_counts</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.html" target="_blank"><code>pandas.Series.str</code></a><br />
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.extract.html" target="_blank"><code>pandas.Series.str.extract</code></a></p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Congrats! This module should give you an introduction to typical data cleaning steps in Python. See Practical L2 for a somewhat more complex example, and the Challenge Exercise for an introduction to writing stable, reusable functions for data cleaning.</p>
+<p>For further practice, try some of the skills we have introduced on your own dataset.</p>
 </div>
 
 
