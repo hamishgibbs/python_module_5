@@ -1,18 +1,73 @@
 ---
-title: "Challenge"
+title: "Practical L2"
 output: html_document
+code_folding: hide
 ---
+<br/>  
 
-### Introduction
+## Introduction
+It is important to write code that is reliable and reusable. Consider sections of the previous exercise that could be wrapped into functions, and reused in multiple contexts. Writing code with a focus on reusability helps to keep you productive, and can reduce the frequency of basic errors. An additional layer of protection is provided by simple tests of the code that you write. 
 
-clean and test data
+Here, we will wrap a processing chain into a function, and test that function using a very basic test class. For more detailed information on unit testing, there are a wide variety of resources available, including the Python unit testing framework [unittest](https://docs.python.org/3/library/unittest.html).
 
-DRY - wrap everything into functions
-test the functions
-test the output dataset - what are appropriate tests? what are not?
+## Function creation
 
-### Section 1
+Consider the regex matching portion of this practical, and the line 
 
-### Section 2
+```{python eval = FALSE}
+hubei['city_name'] = hubei['city'].str.extract(r"(\w*)\s*(?= City)")
+```
 
-### Solutions
+We can refactor this line into a function that extracts the word preceding any string. 
+
+Try this for yourself before referring to the example. 
+
+<br/> <details><summary>Details</summary>
+```{python eval=FALSE}
+def get_prev_word(col, word):
+
+    col = col.str.extract(r"(\w*)(?=\s*{})".format(word))
+    
+    return(col)
+```
+</details><br/>
+
+Consider some of the other steps we have covered and try wrapping them into functions, consider what sections are appropriate for defining as a function and what sections are unique to the `hubei` dataset.  
+
+## Testing
+
+Another important part of data cleaning is testing the functions that you write. There are many resources cencerned with writing testable code, and frameworks for making unit testing easy. Here, we will do it without the use of any external libraries, and write a simple testing class. Refer to the modules on defining classes for the basics of instantiating a class. 
+
+Write a `TestClass` with a method to test the `get_prev_word` function (or whatever you called it).
+
+We instantiate the `TestClass` with some sample data to be passed through the function. Testing on simple examples, rather than real data can help reduce the complexity of your tests.
+
+We are testing with a simple `assert` statement, making the 'assertion' that the reult of our function is exacly what we expect it to be, if it is not, we will get an `AssertionError`.
+
+Try this for yourself before referring to the example. 
+
+<br/> <details><summary>Details</summary>
+```{python eval=FALSE}
+class TestClass():
+    
+    def __init__(self):
+        self.sample = pd.Series(['first word', 'second word'])
+        
+    def test_get_prev_word(self):
+        result = get_prev_word(self.sample, 'word')
+                
+        assert result[0].tolist() == ['first', 'second']
+```
+</details><br/>
+
+Run the test of our function with an instantiation of the `TestClass`. 
+
+<br/> <details><summary>Details</summary>
+```{python eval=FALSE}
+TestClass().test_get_prev_word()
+```
+</details><br/>
+
+## Conclusion
+
+Congrats! We have written a function and tested it. Repeat the previous steps for some other processing steps we have covered, or try working with a dataset of your own. 

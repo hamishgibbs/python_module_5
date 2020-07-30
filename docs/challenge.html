@@ -11,8 +11,9 @@
 
 
 
-<title>Challenge</title>
+<title>Practical L2</title>
 
+<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -298,24 +299,73 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Challenge</h1>
+<h1 class="title toc-ignore">Practical L2</h1>
 
 </div>
 
 
-<div id="introduction" class="section level3">
-<h3>Introduction</h3>
-<p>clean and test data</p>
-<p>DRY - wrap everything into functions test the functions test the output dataset - what are appropriate tests? what are not?</p>
+<p><br/></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>It is important to write code that is reliable and reusable. Consider sections of the previous exercise that could be wrapped into functions, and reused in multiple contexts. Writing code with a focus on reusability helps to keep you productive, and can reduce the frequency of basic errors. An additional layer of protection is provided by simple tests of the code that you write.</p>
+<p>Here, we will wrap a processing chain into a function, and test that function using a very basic test class. For more detailed information on unit testing, there are a wide variety of resources available, including the Python unit testing framework <a href="https://docs.python.org/3/library/unittest.html">unittest</a>.</p>
 </div>
-<div id="section-1" class="section level3">
-<h3>Section 1</h3>
+<div id="function-creation" class="section level2">
+<h2>Function creation</h2>
+<p>Consider the regex matching portion of this practical, and the line</p>
+<pre class="python"><code>hubei[&#39;city_name&#39;] = hubei[&#39;city&#39;].str.extract(r&quot;(\w*)\s*(?= City)&quot;)</code></pre>
+<p>We can refactor this line into a function that extracts the word preceding any string.</p>
+<p>Try this for yourself before referring to the example.</p>
+<br/>
+<details>
+<summary>
+Details
+</summary>
+<pre class="python"><code>def get_prev_word(col, word):
+
+    col = col.str.extract(r&quot;(\w*)(?=\s*{})&quot;.format(word))
+    
+    return(col)</code></pre>
+</details>
+<p><br/></p>
+<p>Consider some of the other steps we have covered and try wrapping them into functions, consider what sections are appropriate for defining as a function and what sections are unique to the <code>hubei</code> dataset.</p>
 </div>
-<div id="section-2" class="section level3">
-<h3>Section 2</h3>
+<div id="testing" class="section level2">
+<h2>Testing</h2>
+<p>Another important part of data cleaning is testing the functions that you write. There are many resources cencerned with writing testable code, and frameworks for making unit testing easy. Here, we will do it without the use of any external libraries, and write a simple testing class. Refer to the modules on defining classes for the basics of instantiating a class.</p>
+<p>Write a <code>TestClass</code> with a method to test the <code>get_prev_word</code> function (or whatever you called it).</p>
+<p>We instantiate the <code>TestClass</code> with some sample data to be passed through the function. Testing on simple examples, rather than real data can help reduce the complexity of your tests.</p>
+<p>We are testing with a simple <code>assert</code> statement, making the ‘assertion’ that the reult of our function is exacly what we expect it to be, if it is not, we will get an <code>AssertionError</code>.</p>
+<p>Try this for yourself before referring to the example.</p>
+<br/>
+<details>
+<summary>
+Details
+</summary>
+<pre class="python"><code>class TestClass():
+    
+    def __init__(self):
+        self.sample = pd.Series([&#39;first word&#39;, &#39;second word&#39;])
+        
+    def test_get_prev_word(self):
+        result = get_prev_word(self.sample, &#39;word&#39;)
+                
+        assert result[0].tolist() == [&#39;first&#39;, &#39;second&#39;]</code></pre>
+</details>
+<p><br/></p>
+<p>Run the test of our function with an instantiation of the <code>TestClass</code>.</p>
+<br/>
+<details>
+<summary>
+Details
+</summary>
+<pre class="python"><code>TestClass().test_get_prev_word()</code></pre>
+</details>
+<p><br/></p>
 </div>
-<div id="solutions" class="section level3">
-<h3>Solutions</h3>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Congrats! We have written a function and tested it. Repeat the previous steps for some other processing steps we have covered, or try working with a dataset of your own.</p>
 </div>
 
 
