@@ -11,9 +11,8 @@
 
 
 
-<title>Practical L2</title>
+<title>Challenge</title>
 
-<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -284,9 +283,6 @@ $(document).ready(function () {
 <li>
   <a href="challenge.html">Challenge</a>
 </li>
-<li>
-  <a href="about.html">About</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -299,7 +295,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Practical L2</h1>
+<h1 class="title toc-ignore">Challenge</h1>
 
 </div>
 
@@ -318,9 +314,7 @@ $(document).ready(function () {
 <p>Try this for yourself before referring to the example.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>def get_prev_word(col, word):
 
     col = col.str.extract(r&quot;(\w*)(?=\s*{})&quot;.format(word))
@@ -332,16 +326,14 @@ Details
 </div>
 <div id="testing" class="section level2">
 <h2>Testing</h2>
-<p>Another important part of data cleaning is testing the functions that you write. There are many resources cencerned with writing testable code, and frameworks for making unit testing easy. Here, we will do it without the use of any external libraries, and write a simple testing class. Refer to the modules on defining classes for the basics of instantiating a class.</p>
+<p>Another important part of data cleaning is testing the functions that you write. There are many resources concerned with writing testable code, and frameworks for making unit testing easy. Here, we will do it without the use of any external libraries, and write a simple testing class. Refer to the modules on defining classes for the basics of instantiating a class.</p>
 <p>Write a <code>TestClass</code> with a method to test the <code>get_prev_word</code> function (or whatever you called it).</p>
 <p>We instantiate the <code>TestClass</code> with some sample data to be passed through the function. Testing on simple examples, rather than real data can help reduce the complexity of your tests.</p>
 <p>We are testing with a simple <code>assert</code> statement, making the ‘assertion’ that the reult of our function is exacly what we expect it to be, if it is not, we will get an <code>AssertionError</code>.</p>
 <p>Try this for yourself before referring to the example.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>class TestClass():
     
     def __init__(self):
@@ -356,9 +348,7 @@ Details
 <p>Run the test of our function with an instantiation of the <code>TestClass</code>.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>TestClass().test_get_prev_word()</code></pre>
 </details>
 <p><br/></p>

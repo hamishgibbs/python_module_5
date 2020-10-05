@@ -13,7 +13,6 @@
 
 <title>Practical L2</title>
 
-<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -284,9 +283,6 @@ $(document).ready(function () {
 <li>
   <a href="challenge.html">Challenge</a>
 </li>
-<li>
-  <a href="about.html">About</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -321,9 +317,7 @@ import numpy as np</code></pre>
 <p>Import csv data from <code>https://raw.githubusercontent.com/hamishgibbs/python_module_5/master/data/hubei.csv</code></p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>data_url = &#39;https://github.com/beoutbreakprepared/nCoV2019/raw/master/covid19/data/clean-hubei.csv&#39;
 
 hubei = pd.read_csv(data_url)</code></pre>
@@ -333,9 +327,7 @@ hubei = pd.read_csv(data_url)</code></pre>
 <p>Define the datatypes of the columns to be imported in a dictionary.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>dtypes = {&#39;age&#39;:&#39;string&#39;, 
           &#39;sex&#39;:&#39;string&#39;, 
           &#39;date_onset_symptoms&#39;:&#39;string&#39;, 
@@ -354,9 +346,7 @@ Details
 <p>Specify data types using the <code>pandas.read_csv()</code> <code>dtypes</code> argument and re-import the data.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei = pd.read_csv(data_url, dtype = dtypes)</code></pre>
 </details>
 <p><br/></p>
@@ -364,9 +354,7 @@ Details
 <p>Use pandas <code>pandas.DataFrame.info()</code> to view some basic information about the dataset.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.info()</code></pre>
 </details>
 <p><br/></p>
@@ -383,9 +371,7 @@ Details
 <p>Indices are used to identify specific data in a dataset. Pandas can access data using row and column indices. In the dataset, column indices are column names, and each row has a unique numeric index. When printing the dataframe, you can see the numeric row indices on the left hand side of the dataframe.</p>
 Use <code>pandas.DataFrame.index</code> to inspect the row index of the <code>hubei</code> dataframe. <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.index</code></pre>
 </details>
 <p><br/></p>
@@ -398,26 +384,20 @@ Details
 <p>Data can be sorted with <code>pandas.DataFrame.sort_values</code>.</p>
 Sort the <code>hubei</code> dataframe by the <code>sex</code> column with <code>pandas.DataFrame.sort_values</code>. <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.sort_values(&#39;sex&#39;)</code></pre>
 </details>
 <p><br/></p>
 Use the argument <code>ascending = False</code> to flip the sorting operation. <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.sort_values(&#39;sex&#39;, ascending = False)</code></pre>
 </details>
 <p><br/></p>
 <p>Notice that the column indices are no longer sequential. This is because the order of the rows in the dataframe has changed, but the row indices have not been changed. This is an important feature, as indices could be used to referenced specific rows through different processing steps, although this is not usually a recommended practice.</p>
 After sorting the data by sex, use the argument <code>inplace = True</code> to alter the original dataset, not a copy. Use <code>ignore_index = True</code> to drop the previous index, the same as using <code>pandas.DataFrame.reset_index()</code>. <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.sort_values(&#39;sex&#39;, ignore_index = True, inplace = True)</code></pre>
 </details>
 <p><br/></p>
@@ -425,9 +405,7 @@ Details
 <p>Sort the dataframe by the province, city, and sex of each patient.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.sort_values([&#39;province&#39;, &#39;city&#39;, &#39;sex&#39;], ascending = False)</code></pre>
 </details>
 <p><br/></p>
@@ -440,9 +418,7 @@ Details
 <p>Select the following columns from the imported dataset:</p>
 <code>'id', 'age', 'sex', 'city', 'province', 'date_admission_hospital', 'date_confirmation', 'symptoms', 'outcome', 'date_death_or_discharge'</code> <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>select_columns = [&#39;id&#39;, 
                   &#39;age&#39;, 
                   &#39;sex&#39;, 
@@ -466,9 +442,7 @@ hubei = hubei[select_columns]</code></pre>
 <p>Use <code>pandas.to_datetime</code> to convert the values in <code>'date_admission_hospital'</code>, <code>'date_confirmation'</code>, and <code>'date_death_or_discharge'</code> to pandas <code>pandas.Timestamp</code> objects. For an understanding of the output of <code>pandas.to_datetime</code>, see the <a href="https://docs.python.org/3/library/datetime.html"><code>datetime</code></a> library.</p>
 Notice that we can pass a pandas series to <code>pandas.to_datetime</code> and return a pandas series of recognized dates. <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>pd.to_datetime(hubei[&#39;date_confirmation&#39;])</code></pre>
 </details>
 <p><br/></p>
@@ -476,9 +450,7 @@ Details
 <p>You can inspect the unique values of the <code>date_confirmation</code> columns using <code>pandas.Series.unique</code>.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei[&#39;date_confirmation&#39;].unique()</code></pre>
 </details>
 <p><br/></p>
@@ -486,9 +458,7 @@ Details
 <p>The best approach to values like this depends on your dataset and what analysis you plan to do. See more on handling missing data below. In this case, we will use the argument <code>errors = 'ignore'</code> to convert any formats that fail to parse into missing values.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>pd.to_datetime(hubei[&#39;date_confirmation&#39;], errors = &#39;ignore&#39;)</code></pre>
 </details>
 <p><br/></p>
@@ -496,9 +466,7 @@ Details
 <p>Applying functions to a selection of columns is extremely useful, see the documentation for further information on applying a function to a pandas column and imagine other cases where this may be useful.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>date_cols = [&#39;date_admission_hospital&#39;, &#39;date_confirmation&#39;, &#39;date_death_or_discharge&#39;]
 
 hubei[date_cols] = hubei[date_cols].apply(pd.to_datetime)</code></pre>
@@ -525,19 +493,15 @@ hubei[date_cols] = hubei[date_cols].apply(pd.to_datetime)</code></pre>
 <p>Use <code>pandas.DataFrame.dropna</code> to drop rows with a missing <code>age</code> value. Use the <code>axis</code> argument to specify that rows should be dropped, not columns. Use the <code>subset</code> argument to drop records with a null value in the <code>age</code> column, not in all columns. Use the argument <code>inplace = True</code> to alter the original dataset, not a copy</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei.dropna(axis = 0, subset = [&#39;age&#39;], inplace = True)</code></pre>
 </details>
 <p><br/></p>
 <p>For some missing values, particularly text fields, it may be useful to replace null values with a certain coded value.</p>
-<p>Use <code>pandas.DataFrame.replace</code> to replace <code>NaN</code> values with a string (<code>"unknown"</code>). In the <code>outcome</code> column.</p>
+<p>Use <code>pandas.DataFrame.replace</code> to replace <code>NaN</code> values with a string (<code>&quot;unknown&quot;</code>). In the <code>outcome</code> column.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei[&#39;outcome&#39;].replace(np.nan, &#39;unknown&#39;, inplace = True)</code></pre>
 </details>
 <p><br/></p>
@@ -548,9 +512,7 @@ Details
 <p>Fill na values with the median of the column using <code>pandas.DataFrame.fillna</code> and <code>pandas.DataFrame.median</code>.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei[&#39;age&#39;] = pd.to_numeric(hubei[&#39;age&#39;], errors = &#39;coerce&#39;)
 hubei[&#39;age&#39;].fillna((hubei[&#39;age&#39;].median()), inplace=True)</code></pre>
 </details>
@@ -571,9 +533,7 @@ hubei[&#39;age&#39;].fillna((hubei[&#39;age&#39;].median()), inplace=True)</code
 <p>Use <code>pandas.Series.value_counts</code> to inspect the values in the <code>city</code> column.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei = pd.read_csv(data_url)
 hubei[&#39;city&#39;].value_counts()</code></pre>
 </details>
@@ -581,19 +541,15 @@ hubei[&#39;city&#39;].value_counts()</code></pre>
 <p>Use a regular expression <code>r'^([\w\-]+)'</code> to extract the first word of the <code>city</code> column into the <code>city_name</code> column. Use <code>pandas.Series.value_counts</code> to inspect the values in the <code>city_name</code> column.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei[&#39;city_name&#39;] = hubei[&#39;city&#39;].str.extract(r&#39;^([\w\-]+)&#39;)
 hubei[&#39;city_name&#39;].value_counts()</code></pre>
 </details>
 <p><br/></p>
-<p>Notice that “Wuhan” has been extracted correctly, but the other city name has not been extracted correctly. We would like to extract the word preceding the word " City“, so we can replace the previous regex with the expression <code>r"(\w*)\s*(?=City)"</code>. This expression extracts the one word preceding the string” City".</p>
+<p>Notice that “Wuhan” has been extracted correctly, but the other city name has not been extracted correctly. We would like to extract the word preceding the word &quot; City“, so we can replace the previous regex with the expression <code>r&quot;(\w*)\s*(?=City)&quot;</code>. This expression extracts the one word preceding the string” City&quot;.</p>
 <br/>
 <details>
-<summary>
-Details
-</summary>
+<p><summary>Details</summary></p>
 <pre class="python"><code>hubei[&#39;city_name&#39;] = hubei[&#39;city&#39;].str.extract(r&quot;(\w*)(?=\s*City)&quot;)
 hubei[&#39;city_name&#39;].value_counts()</code></pre>
 </details>

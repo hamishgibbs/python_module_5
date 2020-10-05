@@ -4,8 +4,6 @@ output: html_document
 author: Hamish Gibbs
 ---
 
-*Please note - this course is currently under development.*
-
 ## Overview
 This module will introduce data management and dataset transformations in Python. Specifically, we will focus on reliably importing data, handling missing values, extracting data from combined dataset records, and manipulating data to produce analysis-ready datasets.
 
@@ -19,7 +17,7 @@ Practical L2: [hubei.csv](https://hamishgibbs.github.io/python_module_5/data/hub
 
 ## Structure
 
-This module includes large code chunks provided in-line. Tasks for each section of the practicals are also listed with bullet points. Relevent documentation for the functions and packages that are required to complete each task are also provided.
+This module includes code chunks provided in-line. Tasks for each section of the practicals are also listed with bullet points. Relevent documentation for the functions and packages that are required to complete each task are also provided.
 
 You are encouraged to develop your own programming style, use the provided documentation for reference, and attempt to find your own solution to each task. 
 

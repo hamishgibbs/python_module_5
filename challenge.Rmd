@@ -1,5 +1,5 @@
 ---
-title: "Practical L2"
+title: "Challenge"
 output: html_document
 code_folding: hide
 ---
@@ -36,7 +36,7 @@ Consider some of the other steps we have covered and try wrapping them into func
 
 ## Testing
 
-Another important part of data cleaning is testing the functions that you write. There are many resources cencerned with writing testable code, and frameworks for making unit testing easy. Here, we will do it without the use of any external libraries, and write a simple testing class. Refer to the modules on defining classes for the basics of instantiating a class. 
+Another important part of data cleaning is testing the functions that you write. There are many resources concerned with writing testable code, and frameworks for making unit testing easy. Here, we will do it without the use of any external libraries, and write a simple testing class. Refer to the modules on defining classes for the basics of instantiating a class. 
 
 Write a `TestClass` with a method to test the `get_prev_word` function (or whatever you called it).
 
