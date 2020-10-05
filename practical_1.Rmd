@@ -24,7 +24,7 @@ Inspect the format of the imported data with `pandas.DataFrame.head`.
 <br/>
 <details><summary>Details</summary>
 ```{python eval=FALSE}
-data_url = 'https://github.com/beoutbreakprepared/nCoV2019/raw/master/covid19/data/clean-hubei.csv'
+data_url = 'https://raw.githubusercontent.com/hamishgibbs/python_module_5/master/data/clean-hubei.csv'
 
 hubei = pd.read_csv(data_url)
 
